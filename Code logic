@@ -1,0 +1,82 @@
+using System;
+
+namespace LennysCarWash
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Display menu
+            Console.WriteLine("Welcome to Lenny's Car Wash!");
+            Console.WriteLine("Please select a wash tier:");
+            Console.WriteLine("1. Basic Wash ($10.00)");
+            Console.WriteLine("2. Premium Wash ($15.00)");
+            Console.WriteLine("3. Ultra Wash ($20.00)");
+
+            // Get user input
+            int washTier = int.Parse(Console.ReadLine());
+            double totalCost = 0.0;
+
+            // Calculate cost based on wash tier selected
+            switch (washTier)
+            {
+                case 1:
+                    totalCost += 10.0;
+                    break;
+                case 2:
+                    totalCost += 15.0;
+                    break;
+                case 3:
+                    totalCost += 20.0;
+                    break;
+                default:
+                    Console.WriteLine("Invalid option selected.");
+                    return;
+            }
+
+            // Display add-ons menu
+            Console.WriteLine("Would you like to add any of the following services?");
+            Console.WriteLine("1. Air Freshener ($2.00)");
+            Console.WriteLine("2. Vacuum Service ($2.00)");
+            Console.WriteLine("3. Wax On Service ($5.00)");
+            Console.WriteLine("4. Tire Shine Service ($5.00)");
+            Console.WriteLine("5. No, thanks.");
+
+            // Get user input
+            int addOnOption = int.Parse(Console.ReadLine());
+
+            // Calculate cost based on add-ons selected
+            switch (addOnOption)
+            {
+                case 1:
+                    totalCost += 2.0;
+                    Console.WriteLine("Air Freshener added.");
+                    break;
+                case 2:
+                    totalCost += 2.0;
+                    Console.WriteLine("Vacuum Service added.");
+                    break;
+                case 3:
+                    totalCost += 5.0;
+                    Console.WriteLine("Wax On Service added.");
+                    break;
+                case 4:
+                    totalCost += 5.0;
+                    Console.WriteLine("Tire Shine Service added.");
+                    break;
+                case 5:
+                    Console.WriteLine("No add-ons selected.");
+                    break;
+                default:
+                    Console.WriteLine("Invalid option selected.");
+                    return;
+            }
+
+            // Display receipt
+            Console.WriteLine("Thank you for your purchase!");
+            Console.WriteLine("Wash selected: " + (washTier == 1 ? "Basic Wash" : washTier == 2 ? "Premium Wash" : "Ultra Wash"));
+            Console.WriteLine("Add-ons selected: " + (addOnOption == 1 ? "Air Freshener" : addOnOption == 2 ? "Vacuum Service" : addOnOption == 3 ? "Wax On Service" : addOnOption == 4 ? "Tire Shine Service" : "None"));
+            Console.WriteLine("Total cost: $" + totalCost.ToString("0.00"));
+        }
+    }
+}
