@@ -1,3 +1,16 @@
+/*
+
+Program Author: Mason Lee
+
+Assignment: Program 3 Lennys Car Wash App
+
+Description:
+
+It allows purchase of cashwash services
+
+*/
+
+
 using System;
 
 namespace LennysCarWash
