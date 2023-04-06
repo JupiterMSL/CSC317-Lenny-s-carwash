@@ -1,0 +1,85 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace LennysCarWash
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Set up the GUI
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            var form = new Form();
+            form.BackColor = ColorTranslator.FromHtml("#222233");
+            form.ClientSize = new Size(600, 500);
+            form.Text = "Lenny's Car Wash";
+            form.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            // Add the main container
+            var mainContainer = new TableLayoutPanel();
+            mainContainer.Dock = DockStyle.Fill;
+            mainContainer.BackColor = ColorTranslator.FromHtml("#444455");
+            mainContainer.Padding = new Padding(20);
+            mainContainer.ColumnCount = 1;
+            mainContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+
+            // Add the title label
+            var titleLabel = new Label();
+            titleLabel.Text = "Lenny's Car Wash";
+            titleLabel.Font = new Font("Segoe UI", 50F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            titleLabel.ForeColor = Color.CadetBlue;
+            titleLabel.TextAlign = ContentAlignment.MiddleCenter;
+
+            mainContainer.Controls.Add(titleLabel, 0, 0);
+
+            // Add the selection options container
+            var optionsContainer = new TableLayoutPanel();
+            optionsContainer.BackColor = ColorTranslator.FromHtml("#444455");
+            optionsContainer.ColumnCount = 1;
+            optionsContainer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+
+            // Add the header row
+            var headerRow = new TableLayoutPanel();
+            headerRow.Dock = DockStyle.Top;
+            headerRow.BackColor = ColorTranslator.FromHtml("#555566");
+            headerRow.RowCount = 1;
+            headerRow.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+
+            var headerLabel = new Label();
+            headerLabel.Text = "Please select a wash tier:";
+            headerLabel.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
+            headerLabel.ForeColor = Color.White;
+            headerLabel.TextAlign = ContentAlignment.MiddleCenter;
+
+            headerRow.Controls.Add(headerLabel, 0, 0);
+
+            optionsContainer.Controls.Add(headerRow, 0, 0);
+
+            // Add the wash tier options
+            var washOptions = new TableLayoutPanel();
+            washOptions.Dock = DockStyle.Top;
+            washOptions.BackColor = ColorTranslator.FromHtml("#444455");
+            washOptions.RowCount = 3;
+            washOptions.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            washOptions.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            washOptions.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+
+            var basicWashButton = new Button();
+            basicWashButton.Text = "Basic Wash ($10.00)";
+            basicWashButton.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            basicWashButton.BackColor = ColorTranslator.FromHtml("#779977");
+            basicWashButton.ForeColor = Color.White;
+            basicWashButton.FlatStyle = FlatStyle.Flat;
+            basicWashButton.FlatAppearance.BorderSize = 0;
+            basicWashButton.Dock = DockStyle.Fill;
+            basicWashButton.Margin = new Padding(0, 20, 0, 20);
+            basicWashButton.Click += (s, e) =>
+            {
+                UpdateTotal(10.0, addOnOption);
+            };
+
+            var premiumWashButton = new Button();
+            premiumWashButton.Text = "Premium
